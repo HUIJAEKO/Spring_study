@@ -3,6 +3,7 @@ package hello.hellospring.service;
 import hello.hellospring.Repository.MemberRepository;
 import hello.hellospring.Repository.MemoryMemberRepository;
 import hello.hellospring.domain.Member;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-
+    @Transactional
     public Long join(Member member){
         //같은 이름이 있는 중복 회원 X
         DuplicatedMember(member);
